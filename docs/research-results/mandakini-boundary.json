@@ -1,0 +1,108 @@
+{
+  "region": "Mandakini River Catchment upstream of Rudraprayag",
+  "country": "India",
+  "state": "Uttarakhand",
+  "outlet_reference": {
+    "name": "Rudraprayag (M)",
+    "cwc_station_code": "CW1ARA000251",
+    "station_type": "GD (Gauge and Discharge)",
+    "river": "Mandakini",
+    "basin_organization": "Upper Ganga Basin Organisation (UGBO)",
+    "approximate_coordinates_dms": "30°17'20\" N, 78°59'00\" E",
+    "approximate_coordinates_decimal": {
+      "latitude": 30.289,
+      "longitude": 78.979
+    },
+    "coordinate_source": "CWC station metadata",
+    "coordinate_precision_note": "Approximate; exact coordinates from CWC 8th edition station directory not verified in this session"
+  },
+  "canonical_boundary_status": "provisionally_verified",
+  "authoritative_source_identified": true,
+  "boundary_service": {
+    "provider": "ISRO / National Remote Sensing Centre (NRSC)",
+    "platform": "Bhuvan GeoServer",
+    "service_type": "OGC WMS 1.1.1 (GetFeatureInfo with geometry)",
+    "service_url": "https://bhuvan-vec1.nrsc.gov.in/bhuvan/wms",
+    "layer_name": "cite:bhuvan_watershed",
+    "feature_type_namespace": "UK_WS (Uttarakhand Watersheds)",
+    "crs": "EPSG:4326",
+    "geometry_type": "MultiPolygon",
+    "access_constraints": "NONE (as declared in WMS capabilities)",
+    "fees": "NONE (as declared in WMS capabilities)",
+    "wfs_available": false,
+    "wfs_note": "Layer is NOT exposed via WFS; feature download only possible through WMS GetFeatureInfo or interactive Bhuvan portal"
+  },
+  "catchment_identification": {
+    "method": "Systematic grid-point querying of WMS GetFeatureInfo across the Mandakini valley",
+    "nriscode_prefix": "0202050601",
+    "nriscode_hierarchy": {
+      "02": "Water Resources Region (Ganga)",
+      "02": "Basin (Ganga)",
+      "05": "Catchment (Alaknanda system)",
+      "06": "Sub-catchment (Mandakini)",
+      "01": "Sub-level within Mandakini"
+    },
+    "watershedc_prefix": "2B5F1",
+    "watershedc_note": "Alpha-numeric encoding of the same hierarchy as NRISCODE",
+    "total_watershed_polygons_identified": 64,
+    "identification_method_note": "Grid sampling at 5km and 2.5km spacing; actual total may be higher due to small watersheds between grid points"
+  },
+  "candidate_sources": [
+    {
+      "name": "Bhuvan WMS cite:bhuvan_watershed",
+      "provider": "ISRO/NRSC",
+      "type": "WMS with GetFeatureInfo geometry",
+      "authoritativeness": "HIGH - official Indian government",
+      "downloadable_via_wfs": false,
+      "downloadable_via_portal": "UNVERIFIED - requires Bhuvan registration",
+      "status": "IDENTIFIED - geometry confirmed via WMS queries"
+    },
+    {
+      "name": "India-WRIS Watershed Atlas",
+      "provider": "CWC/NRSC",
+      "type": "WebGIS with download",
+      "authoritativeness": "HIGHEST - official government watershed delineation",
+      "downloadable_via_wfs": "UNVERIFIED",
+      "downloadable_via_portal": "UNVERIFIED - portal was inaccessible during research",
+      "status": "INACCESSIBLE"
+    },
+    {
+      "name": "HydroBASINS Level 12",
+      "provider": "WWF/McGill (HydroSHEDS)",
+      "type": "Shapefile download",
+      "authoritativeness": "MEDIUM - peer-reviewed global dataset, not Indian government",
+      "downloadable_via_wfs": "N/A",
+      "downloadable_via_portal": true,
+      "status": "AVAILABLE as fallback"
+    }
+  ],
+  "selected_source": {
+    "name": "Bhuvan WMS cite:bhuvan_watershed",
+    "provider": "ISRO/NRSC",
+    "rationale": "Official Indian government watershed delineation; features confirmed via live WMS queries; NRISCODE hierarchy matches India-WRIS codification system"
+  },
+  "area_km2": {
+    "nrsc_reported": 1614,
+    "cwc_reported": 1644,
+    "computed_from_boundary": null,
+    "discrepancy_note": "The ~30 km² difference between NRSC (1614) and CWC (1644) values is documented. Actual area from downloaded polygon not yet computed."
+  },
+  "crs": "EPSG:4326",
+  "geometry_type": "MultiPolygon (individual watersheds); requires merging/dissolving to produce single catchment boundary",
+  "source_url": "https://bhuvan-vec1.nrsc.gov.in/bhuvan/wms",
+  "access_method": "WMS GetFeatureInfo with INFO_FORMAT=application/json",
+  "boundary_extent_approximate": {
+    "min_longitude": 78.75,
+    "max_longitude": 79.25,
+    "min_latitude": 30.25,
+    "max_latitude": 30.85
+  },
+  "notes": [
+    "Boundary consists of multiple watershed polygons that must be dissolved/merged to create single catchment polygon",
+    "NRISCODE prefix 0202050601 confirmed for all Mandakini valley points tested",
+    "Rudraprayag confluence point (Alaknanda side) returned different prefix 0202050402, confirming correct catchment delineation",
+    "WFS endpoint does NOT expose this layer; download only via WMS GetFeatureInfo or Bhuvan interactive portal",
+    "Grid sampling identified 64 unique watershed codes; actual total may be slightly higher",
+    "Geometry validity and total area computation require GIS software processing after download"
+  ]
+}

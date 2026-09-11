@@ -1,0 +1,76 @@
+{
+  "file": "mandakini_catchment_upstream_rudraprayag.geojson",
+  "authoritative_source": "ISRO / National Remote Sensing Centre (NRSC) — Bhuvan GeoServer",
+  "source_url": "https://bhuvan.nrsc.gov.in/",
+  "service_url": "https://bhuvan-vec1.nrsc.gov.in/bhuvan/wms",
+  "service_type": "OGC WMS 1.1.1 — GetFeatureInfo with geometry (application/json)",
+  "layer_name": "cite:bhuvan_watershed",
+  "feature_namespace": "UK_WS (Uttarakhand Watersheds)",
+  "feature_identifier": "NRISCODE prefix 0202050601 (Mandakini sub-catchment)",
+  "nriscode_hierarchy": {
+    "02": "Water Resources Region — Ganga",
+    "02_basin": "Basin — Ganga",
+    "05": "Catchment — Alaknanda system",
+    "06": "Sub-catchment — Mandakini",
+    "01": "Sub-level within Mandakini"
+  },
+  "download_date": "2026-09-10",
+  "download_method": "Systematic grid-point WMS GetFeatureInfo queries at 2.5 km spacing across the Mandakini catchment extent (78.80-79.25E, 30.25-30.85N), filtering for features with NRISCODE starting with 0202050601",
+  "crs": "EPSG:4326 (WGS84)",
+  "geometry_type": "MultiPolygon (individual watershed polygons, not dissolved)",
+  "feature_count": 163,
+  "area_reported_by_source": {
+    "nrsc_mandakini_study_km2": 1614,
+    "cwc_rudraprayag_m_station_km2": 1644,
+    "computed_from_this_boundary_km2": null,
+    "note": "Area not yet computed from this polygon; requires geodesic area calculation after dissolving all 163 watershed polygons"
+  },
+  "bounding_box_approximate": {
+    "min_longitude": 78.75,
+    "max_longitude": 79.25,
+    "min_latitude": 30.25,
+    "max_latitude": 30.85
+  },
+  "outlet_reference": {
+    "name": "Rudraprayag (M)",
+    "cwc_station_code": "CW1ARA000251",
+    "coordinates_decimal": {
+      "latitude": 30.289,
+      "longitude": 78.979
+    }
+  },
+  "processing_performed": [
+    "1. WMS GetCapabilities queried to identify cite:bhuvan_watershed layer",
+    "2. GetFeatureInfo (text/plain) at 14 named locations to identify NRISCODE prefix",
+    "3. GetFeatureInfo (text/plain) grid scan at 5 km spacing: 64 unique codes found",
+    "4. GetFeatureInfo (application/json) fine grid scan at 2.5 km spacing: 163 unique codes found",
+    "5. Individual feature GeoJSON responses saved as temp files",
+    "6. Features extracted from individual FeatureCollection wrappers",
+    "7. Merged into single FeatureCollection GeoJSON with CRS declaration",
+    "NOTE: Polygons are NOT dissolved — they remain as 163 individual watershed polygons that together compose the Mandakini catchment"
+  ],
+  "checksum": {
+    "algorithm": "SHA256",
+    "value": "115FB4DB1CC91501D896EC6A26C7886B5078B025BB0C0DF075C0C19187FD507D"
+  },
+  "file_size_bytes": 1262925,
+  "limitations": [
+    "Boundary consists of 163 individual watershed polygons; needs dissolving for a single catchment outline",
+    "Grid sampling at 2.5 km spacing may miss very small watersheds between sample points",
+    "WFS was not available; geometry obtained via WMS GetFeatureInfo point queries",
+    "Area has not been computed from this polygon; comparison to CWC/NRSC values pending",
+    "Geometry validity (self-intersections, gaps, overlaps) not formally tested",
+    "Some features near the catchment boundary may include small areas outside the true Mandakini drainage"
+  ],
+  "verification_status": "PROVISIONALLY VERIFIED",
+  "verification_details": {
+    "service_verified": true,
+    "layer_verified": true,
+    "feature_attributes_verified": true,
+    "nriscode_prefix_verified": true,
+    "alaknanda_side_cross_check": "Rudraprayag confluence point on Alaknanda side returned NRISCODE 0202050402 (different sub-catchment), confirming correct catchment delineation",
+    "area_verified": false,
+    "geometry_validity_verified": false,
+    "cwc_station_overlay_verified": false
+  }
+}
